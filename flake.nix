@@ -8,7 +8,8 @@
       pkgs = nixpkgs.legacyPackages.${system};
       package = self.packages.${system}.default;
     in {
-      packages.${system}.default = (import ./derivation.nix { inherit pkgs; });
+      packages.${system}.default =
+        (import ./derivation.nix { inherit pkgs; }).helloPkg;
       nixosModules.default = (import ./module.nix { inherit inputs self; });
     };
 }
