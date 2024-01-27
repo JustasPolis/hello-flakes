@@ -1,5 +1,5 @@
 { lib, pkgs, config, ... }:
-with lib;                      
+with lib;
 let
   # Shorter name to access final settings a 
   # user of hello.nix module HAS ACTUALLY SET.
@@ -21,7 +21,8 @@ in {
   config = mkIf cfg.enable {
     systemd.services.hello = {
       wantedBy = [ "multi-user.target" ];
-      serviceConfig.ExecStart = "${pkgs.hello}/bin/hello -g'Hello, ${escapeShellArg cfg.greeter}!'";
+      serviceConfig.ExecStart =
+        "${pkgs.hello}/bin/hello -g'Hello, ${escapeShellArg cfg.greeter}!'";
     };
   };
 }
