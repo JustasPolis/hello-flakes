@@ -1,5 +1,4 @@
-self:
-{ config, lib, outputs, ... }:
+{ inputs, outputs, config, lib, ... }:
 let
   cfg = config.services.hello;
   system = "x86_64-linux";
@@ -17,7 +16,9 @@ in {
     systemd.services.hello = {
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart =
-        "${outputs.packages.${system}.default}/bin/hello -g'Hello, ${lib.escapeShellArg cfg.greeter}!'";
+        "${outputs.packages.${system}.default}/bin/hello -g'Hello, ${
+          lib.escapeShellArg cfg.greeter
+        }!'";
     };
   };
 }
