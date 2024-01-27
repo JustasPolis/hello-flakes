@@ -7,6 +7,6 @@
       pkgs = nixpkgs.packages.${system};
     in {
       packages.${system}.default = (import ./default.nix { inherit pkgs; });
-      nixosModules.hello = (import ./module.nix { inherit inputs pkgs; });
+      nixosModules.default = (import ./module.nix { inherit inputs pkgs; });
     };
 }
