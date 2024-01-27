@@ -1,9 +1,6 @@
 {
   description = "GNU hello flake";
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
-    hello.url = "github:JustasPolis/hello-flakes/main";
-  };
+  inputs = { nixpkgs.url = "github:nixos/nixpkgs"; };
   outputs = { self, nixpkgs, hello }@inputs:
     let
       inherit (self) outputs;

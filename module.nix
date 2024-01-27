@@ -1,4 +1,3 @@
-inputs:
 { config, lib, ... }:
 let
   cfg = config.services.hello;
