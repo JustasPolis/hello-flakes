@@ -11,6 +11,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       packages.${system}.default = (import ./default.nix { inherit pkgs; });
-      nixosModules.hello = (import ./module.nix);
+      nixosModules.hello = (import ./module.nix { inherit inputs outputs; });
     };
 }
