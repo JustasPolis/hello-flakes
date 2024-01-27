@@ -17,7 +17,7 @@ in {
     systemd.services.hello = {
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart =
-        "${self.packages.${system}.default}.default}/bin/hello -g'Hello, ${
+        "${self.packages.${system}.default}/bin/hello -g'Hello, ${
           lib.escapeShellArg cfg.greeter
         }!'";
     };
