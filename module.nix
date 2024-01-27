@@ -1,5 +1,5 @@
 self:
-{ config, lib, ... }:
+{ config, lib, inputs, outputs, ... }:
 let
   cfg = config.services.hello;
   system = "x86_64-linux";
