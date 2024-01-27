@@ -1,4 +1,5 @@
-{ inputs, outputs, config, lib, ... }:
+inputs:
+{ config, lib, outputs, ... }:
 let
   cfg = config.services.hello;
   system = "x86_64-linux";
