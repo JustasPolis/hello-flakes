@@ -1,5 +1,4 @@
 { pkgs, config, ... }:
-with lib;
 let
   # Shorter name to access final settings a 
   # user of hello.nix module HAS ACTUALLY SET.
