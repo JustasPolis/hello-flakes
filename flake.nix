@@ -1,13 +1,14 @@
 {
   description = "GNU hello flake";
   inputs = { nixpkgs.url = "github:nixos/nixpkgs"; };
-  outputs = { self, nixpkgs  }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      package = self.packages.${system}.default;
     in {
       packages.${system}.default = (import ./derivation.nix { inherit pkgs; });
-      nixosModules.default = (import ./module.nix { inherit self; });
+      nixosModules.default = (import ./module.nix { inherit inputs package; });
     };
 }
