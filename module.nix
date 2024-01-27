@@ -1,8 +1,6 @@
-self:
-{ config, lib, inputs, outputs, ... }:
-let
-  cfg = config.services.hello;
-  system = "x86_64-linux";
+inputs:
+{ config, lib, pkgs, ... }:
+let cfg = config.services.hello;
 in {
   options.services.hello = {
     enable = lib.mkEnableOption "hello service";
@@ -13,13 +11,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment = { systemPackages = [ self.packages.${system}.default ]; };
+    environment = { systemPackages = [ inputs.hello.packages.${pkgs.system}.default ]; };
     systemd.services.hello = {
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart =
-        "${self.packages.${system}.default}/bin/hello -g'Hello, ${
-          lib.escapeShellArg cfg.greeter
-        }!'";
+        "${inputs.hello.packages.${pkgs.system}.default}/bin/hello -g'Hello, ${lib.escapeShellArg cfg.greeter}!'";
     };
   };
 }
