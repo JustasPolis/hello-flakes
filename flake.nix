@@ -9,8 +9,5 @@
       inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      packages.${system}.default = (import ./hello.nix { inherit pkgs; });
-      nixosModules.default = (import ./module.nix { inherit inputs; });
-    };
+    in { packages.${system}.default = (import ./hello.nix { inherit pkgs; }); };
 }
