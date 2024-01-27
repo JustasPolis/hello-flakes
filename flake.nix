@@ -10,6 +10,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      packages.${system}.default = (import ./default.nix { inherit pkgs; });
+      packages.hello = (import ./default.nix { inherit pkgs; });
+      packages.${system}.default = self.packages.hello;
     };
 }
