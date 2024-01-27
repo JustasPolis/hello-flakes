@@ -1,3 +1,4 @@
+inputs:
 { config, lib, pkgs }:
 let cfg = config.services.hello;
 in {
