@@ -9,6 +9,6 @@
       package = self.packages.${system}.default;
     in {
       packages.${system}.default = (import ./derivation.nix { inherit pkgs; });
-      nixosModules.default = (import ./module.nix { inherit inputs package; });
+      nixosModules.default = (import ./module.nix { inherit inputs self; });
     };
 }
