@@ -10,7 +10,7 @@ in {
   options.services.hello = {
     enable = lib.mkEnableOption "hello service";
     greeter = lib.mkOption {
-      type = types.str;
+      type = lib.types.str;
       default = "world";
     };
   };
