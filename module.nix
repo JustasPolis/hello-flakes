@@ -19,7 +19,7 @@ in {
   # a user of this "hello.nix" module ENABLED this module 
   # by setting "services.hello.enable = true;".
   config = lib.mkIf cfg.enable {
-    systemPackages = [ pkgs.hello ];
+    environment = { systemPackages = [ pkgs.hello ]; };
     systemd.services.hello = {
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart =
