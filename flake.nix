@@ -4,7 +4,7 @@
   outputs = { self, nixpkgs }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.packages.${system};
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
       packages.${system}.default = (import ./derivation.nix { inherit pkgs; });
       nixosModules.default = (import ./module.nix { inherit inputs pkgs; });

@@ -1,11 +1,11 @@
 { pkgs }:
 pkgs.stdenv.mkDerivation rec {
   pname = "hello";
-  version = "2.10";
+  version = "2.11";
 
   src = pkgs.fetchurl {
     url = "mirror://gnu/hello/${pname}-${version}.tar.gz";
-    sha256 = "sha256-MeBmE3qWJnbon2nRtlOC3pWn732RS4y5VvQepy4PUWs=";
+    sha256 = "sha256-jJzgVy08RO0GcOsc3pgFhOA4tvYsJf396O8SjeFQBL0=";
   };
 
   meta = with pkgs.lib; {
