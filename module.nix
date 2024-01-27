@@ -1,12 +1,6 @@
-inputs:
-{ config, lib, pkgs, ... }:
-let
-  # Shorter name to access final settings a 
-  # user of hello.nix module HAS ACTUALLY SET.
-  # cfg is a typical convention.
-  cfg = config.services.hello;
+{ config, lib, pkgs }:
+let cfg = config.services.hello;
 in {
-  # Declare what settings a user of this "hello.nix" module CAN SET.
   options.services.hello = {
     enable = lib.mkEnableOption "hello service";
     greeter = lib.mkOption {
@@ -15,9 +9,6 @@ in {
     };
   };
 
-  # Define what other settings, services and resources should be active IF
-  # a user of this "hello.nix" module ENABLED this module 
-  # by setting "services.hello.enable = true;".
   config = lib.mkIf cfg.enable {
     environment = { systemPackages = [ pkgs.hello ]; };
     systemd.services.hello = {
