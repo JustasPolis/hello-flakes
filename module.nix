@@ -1,5 +1,5 @@
-{ inputs, self }:
-{ config, lib, pkgs, package, system, ... }:
+{ inputs, self, system }:
+{ config, lib, pkgs, ... }:
 let cfg = config.services.hello;
 in {
   options.services.hello = {
