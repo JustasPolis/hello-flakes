@@ -1,8 +1,6 @@
 { inputs, self }:
-{ config, lib, pkgs, package, ... }:
-let
-  cfg = config.services.hello;
-  system = "x86_64-linux";
+{ config, lib, pkgs, package, system, ... }:
+let cfg = config.services.hello;
 in {
   options.services.hello = {
     enable = lib.mkEnableOption "hello service";

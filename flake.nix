@@ -6,7 +6,6 @@
       inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      package = self.packages.${system}.default;
     in {
       packages.${system}.default =
         (import ./derivation.nix { inherit pkgs; }).helloPkg;
